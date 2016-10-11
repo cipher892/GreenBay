@@ -1,0 +1,386 @@
+material Lisanne_Tools
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.9921568627450981 0.6941176470588235 0.03529411764705882 1.0
+      }
+   }
+}
+material Lisanne_Caulk
+{
+   technique
+   {
+      pass
+      {
+         diffuse 1.0 1.0 1.0 1.0
+      }
+   }
+}
+material Lisanne_Bandana
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.8705882352941177 0.07058823529411765 0.13333333333333333 1.0
+      }
+   }
+}
+material Lisanne_Skin
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.7647058823529411 0.6196078431372549 0.5019607843137255 1.0
+      }
+   }
+}
+material Lisanne_Hair
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.4627450980392157 0.3137254901960784 0.22745098039215686 1.0
+      }
+   }
+}
+material Lisanne_Metal
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.7647058823529411 0.7647058823529411 0.7647058823529411 1.0
+      }
+   }
+}
+material Lisanne_Boots
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.9058823529411765 0.9098039215686274 0.8862745098039215 1.0
+      }
+   }
+}
+material Lisanne_Overalls
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.792156862745098 0.796078431372549 0.7764705882352941 1.0
+      }
+   }
+}
+material Lisanne_Bracelet
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.3607843137254902 0.3137254901960784 0.30980392156862746 1.0
+      }
+   }
+}
+material Lisanne_Boot_Sole_01
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.6196078431372549 0.4588235294117647 0.3254901960784314 1.0
+      }
+   }
+}
+material Lisanne_Tool_Bag_01
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.09411764705882353 0.09803921568627451 0.11372549019607843 1.0
+      }
+   }
+}
+material Lisanne_Tool_Bag_03
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.23921568627450981 0.36470588235294116 0.14901960784313725 1.0
+      }
+   }
+}
+material Lisanne_Eraser
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.9803921568627451 0.7176470588235294 0.6745098039215687 1.0
+      }
+   }
+}
+material Lisanne_Caulkgun
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.011764705882352941 0.17647058823529413 0.45098039215686275 1.0
+      }
+   }
+}
+material Lisanne_Brush_Metal
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.5058823529411764 0.35294117647058826 0.13725490196078433 1.0
+      }
+   }
+}
+material Lisanne_Brush
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.803921568627451 0.7686274509803922 0.7254901960784313 1.0
+      }
+   }
+}
+material Lisanne_Shirt_Blue
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.1411764705882353 0.2823529411764706 0.3686274509803922 1.0
+      }
+   }
+}
+material Lisanne_Hammer
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.23529411764705882 0.25098039215686274 0.27450980392156865 1.0
+      }
+   }
+}
+material Lisanne_Boot_Sole_02
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.1568627450980392 0.10980392156862745 0.06274509803921569 1.0
+      }
+   }
+}
+material Lisanne_Tool_Bag_02
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.1568627450980392 0.15294117647058825 0.20784313725490197 1.0
+      }
+   }
+}
+material Lisanne_Watch
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.1843137254901961 0.0 0.03529411764705882 1.0
+      }
+   }
+}
+material Lisanne_Brush_Handle
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.403921568627451 0.0 0.0392156862745098 1.0
+      }
+   }
+}
+material Lisanne_Necklace
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.7568627450980392 0.7137254901960784 0.4666666666666667 1.0
+      }
+   }
+}
+material <Black>
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.0 0.0 0.0 1.0
+      }
+   }
+}
+material <DarkGoldenrod>
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.7215686274509804 0.5254901960784314 0.043137254901960784 1.0
+      }
+   }
+}
+material <Gray6>
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.3764705882352941 0.3764705882352941 0.3764705882352941 1.0
+      }
+   }
+}
+material <Beige>1
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.8274509803921568 0.7411764705882353 0.5647058823529412 1.0
+      }
+   }
+}
+material <Brown>
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.4666666666666667 0.34509803921568627 0.21176470588235294 1.0
+      }
+   }
+}
+material <Charcoal>
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.13725490196078433 0.13725490196078433 0.13725490196078433 1.0
+      }
+   }
+}
+material <Redwood>
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.6549019607843137 0.396078431372549 0.3215686274509804 1.0
+      }
+   }
+}
+material jean_blue
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.1411764705882353 0.1843137254901961 0.25882352941176473 1.0
+      }
+   }
+}
+material Material6
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.13333333333333333 0.13725490196078433 0.12549019607843137 1.0
+      }
+   }
+}
+material Material1
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.2196078431372549 0.2196078431372549 0.2196078431372549 1.0
+      }
+   }
+}
+material Material10
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.11764705882352941 0.12941176470588237 0.08627450980392157 1.0
+      }
+   }
+}
+material Material9
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.43529411764705883 0.4470588235294118 0.40784313725490196 1.0
+      }
+   }
+}
+material <Gray6>1
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.4666666666666667 0.4666666666666667 0.4666666666666667 1.0
+      }
+   }
+}
+material Material3
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.2901960784313726 0.3843137254901961 0.2901960784313726 1.0
+      }
+   }
+}
+material Material7
+{
+   technique
+   {
+      pass
+      {
+         diffuse 0.8588235294117647 0.8588235294117647 0.8588235294117647 1.0
+      }
+   }
+}
+material Metal_Corrogated_Shiny
+{
+   technique
+   {
+      pass
+      {
