@@ -1,0 +1,44 @@
+// An Overlay to display "Game Paused" when the player pauses the game
+PauseOverlay
+ {
+   // set a high z-order, displays on top of anything with lower z-order
+   zorder 500
+
+   // create a PanelOverlayElement container to hold the text area
+   container Panel(Pause)
+    {
+      // use relative metrics mode to position and size this container
+      metrics_mode relative
+
+     // place the container at the top-left corner of the window
+     left 0.0
+     top 0.0
+
+     // make the container the same size as the window
+     width 1.0
+     height 1.0
+
+     element TextArea(pauseText)
+      {
+        // position and size the element relative to its container
+        metrics_mode relative
+
+        // center it vertically in the container
+        vert_align center
+
+       // put the left corner 4/10 from the left of the container and
+       // make it 2/10 the width of the container and 1/10 the height
+       left 0.4
+       width 0.2
+       height 0.1
+
+       // set the font used for caption and set the size and color
+       font_name BlueBold
+       char_height 0.05
+       colour 0 0 0
+       caption Game Paused
+      }
+
+   }
+   
+ }
