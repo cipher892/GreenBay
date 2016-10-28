@@ -224,6 +224,30 @@ src/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/GreenBay.dir/build.make CMakeFiles/GreenBay.dir/src/Main.cpp.s
 .PHONY : src/Main.cpp.s
 
+src/Raptor.o: src/Raptor.cpp.o
+.PHONY : src/Raptor.o
+
+# target to build an object file
+src/Raptor.cpp.o:
+	$(MAKE) -f CMakeFiles/GreenBay.dir/build.make CMakeFiles/GreenBay.dir/src/Raptor.cpp.o
+.PHONY : src/Raptor.cpp.o
+
+src/Raptor.i: src/Raptor.cpp.i
+.PHONY : src/Raptor.i
+
+# target to preprocess a source file
+src/Raptor.cpp.i:
+	$(MAKE) -f CMakeFiles/GreenBay.dir/build.make CMakeFiles/GreenBay.dir/src/Raptor.cpp.i
+.PHONY : src/Raptor.cpp.i
+
+src/Raptor.s: src/Raptor.cpp.s
+.PHONY : src/Raptor.s
+
+# target to generate assembly for a file
+src/Raptor.cpp.s:
+	$(MAKE) -f CMakeFiles/GreenBay.dir/build.make CMakeFiles/GreenBay.dir/src/Raptor.cpp.s
+.PHONY : src/Raptor.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -246,6 +270,9 @@ help:
 	@echo "... src/Main.o"
 	@echo "... src/Main.i"
 	@echo "... src/Main.s"
+	@echo "... src/Raptor.o"
+	@echo "... src/Raptor.i"
+	@echo "... src/Raptor.s"
 .PHONY : help
 
 

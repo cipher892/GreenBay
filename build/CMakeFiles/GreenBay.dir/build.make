@@ -72,9 +72,32 @@ CMakeFiles/GreenBay.dir/src/Halo.cpp.o.provides: CMakeFiles/GreenBay.dir/src/Hal
 
 CMakeFiles/GreenBay.dir/src/Halo.cpp.o.provides.build: CMakeFiles/GreenBay.dir/src/Halo.cpp.o
 
+CMakeFiles/GreenBay.dir/src/Raptor.cpp.o: CMakeFiles/GreenBay.dir/flags.make
+CMakeFiles/GreenBay.dir/src/Raptor.cpp.o: ../src/Raptor.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/chuks/others/GreenBay/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/GreenBay.dir/src/Raptor.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GreenBay.dir/src/Raptor.cpp.o -c /home/chuks/others/GreenBay/src/Raptor.cpp
+
+CMakeFiles/GreenBay.dir/src/Raptor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GreenBay.dir/src/Raptor.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/chuks/others/GreenBay/src/Raptor.cpp > CMakeFiles/GreenBay.dir/src/Raptor.cpp.i
+
+CMakeFiles/GreenBay.dir/src/Raptor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GreenBay.dir/src/Raptor.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/chuks/others/GreenBay/src/Raptor.cpp -o CMakeFiles/GreenBay.dir/src/Raptor.cpp.s
+
+CMakeFiles/GreenBay.dir/src/Raptor.cpp.o.requires:
+.PHONY : CMakeFiles/GreenBay.dir/src/Raptor.cpp.o.requires
+
+CMakeFiles/GreenBay.dir/src/Raptor.cpp.o.provides: CMakeFiles/GreenBay.dir/src/Raptor.cpp.o.requires
+	$(MAKE) -f CMakeFiles/GreenBay.dir/build.make CMakeFiles/GreenBay.dir/src/Raptor.cpp.o.provides.build
+.PHONY : CMakeFiles/GreenBay.dir/src/Raptor.cpp.o.provides
+
+CMakeFiles/GreenBay.dir/src/Raptor.cpp.o.provides.build: CMakeFiles/GreenBay.dir/src/Raptor.cpp.o
+
 CMakeFiles/GreenBay.dir/src/Game.cpp.o: CMakeFiles/GreenBay.dir/flags.make
 CMakeFiles/GreenBay.dir/src/Game.cpp.o: ../src/Game.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/chuks/others/GreenBay/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/chuks/others/GreenBay/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/GreenBay.dir/src/Game.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GreenBay.dir/src/Game.cpp.o -c /home/chuks/others/GreenBay/src/Game.cpp
 
@@ -97,7 +120,7 @@ CMakeFiles/GreenBay.dir/src/Game.cpp.o.provides.build: CMakeFiles/GreenBay.dir/s
 
 CMakeFiles/GreenBay.dir/src/Main.cpp.o: CMakeFiles/GreenBay.dir/flags.make
 CMakeFiles/GreenBay.dir/src/Main.cpp.o: ../src/Main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/chuks/others/GreenBay/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/chuks/others/GreenBay/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/GreenBay.dir/src/Main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GreenBay.dir/src/Main.cpp.o -c /home/chuks/others/GreenBay/src/Main.cpp
 
@@ -121,6 +144,7 @@ CMakeFiles/GreenBay.dir/src/Main.cpp.o.provides.build: CMakeFiles/GreenBay.dir/s
 # Object files for target GreenBay
 GreenBay_OBJECTS = \
 "CMakeFiles/GreenBay.dir/src/Halo.cpp.o" \
+"CMakeFiles/GreenBay.dir/src/Raptor.cpp.o" \
 "CMakeFiles/GreenBay.dir/src/Game.cpp.o" \
 "CMakeFiles/GreenBay.dir/src/Main.cpp.o"
 
@@ -128,6 +152,7 @@ GreenBay_OBJECTS = \
 GreenBay_EXTERNAL_OBJECTS =
 
 bin/GreenBay: CMakeFiles/GreenBay.dir/src/Halo.cpp.o
+bin/GreenBay: CMakeFiles/GreenBay.dir/src/Raptor.cpp.o
 bin/GreenBay: CMakeFiles/GreenBay.dir/src/Game.cpp.o
 bin/GreenBay: CMakeFiles/GreenBay.dir/src/Main.cpp.o
 bin/GreenBay: CMakeFiles/GreenBay.dir/build.make
@@ -150,6 +175,7 @@ CMakeFiles/GreenBay.dir/build: bin/GreenBay
 .PHONY : CMakeFiles/GreenBay.dir/build
 
 CMakeFiles/GreenBay.dir/requires: CMakeFiles/GreenBay.dir/src/Halo.cpp.o.requires
+CMakeFiles/GreenBay.dir/requires: CMakeFiles/GreenBay.dir/src/Raptor.cpp.o.requires
 CMakeFiles/GreenBay.dir/requires: CMakeFiles/GreenBay.dir/src/Game.cpp.o.requires
 CMakeFiles/GreenBay.dir/requires: CMakeFiles/GreenBay.dir/src/Main.cpp.o.requires
 .PHONY : CMakeFiles/GreenBay.dir/requires

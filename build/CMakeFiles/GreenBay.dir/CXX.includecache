@@ -26,6 +26,10 @@ Ogre.h
 OgreAL.h
 -
 
+/home/chuks/others/GreenBay/include/Raptor.h
+Ogre.h
+-
+
 /home/chuks/others/GreenBay/src/Game.cpp
 sstream
 -
@@ -47,6 +51,8 @@ OISKeyboard.h
 /home/chuks/others/GreenBay/include/Game.h
 ../include/Halo.h
 /home/chuks/others/GreenBay/include/Halo.h
+../include/Raptor.h
+/home/chuks/others/GreenBay/include/Raptor.h
 
 /usr/include/ois/OISConfig.h
 

@@ -9,6 +9,7 @@
 #include <OISKeyboard.h> // OISKeyboard class definition
 #include "../include/Game.h" // Game class definition
 #include "../include/Halo.h"
+#include "../include/Raptor.h"
 using namespace std;
 using namespace Ogre;
 
@@ -33,7 +34,7 @@ Game::Game()
 
    // create Camera
    cameraPtr = sceneManagerPtr->createCamera("GameCam");
-   cameraPtr->setPosition(Vector3(0, 0, 200)); // set Camera position
+   cameraPtr->setPosition(Vector3(0, 35, 150)); // set Camera position
    cameraPtr->lookAt(Vector3(0, 0, 0)); // set where Camera looks
    cameraPtr->setNearClipDistance(5); // near distance Camera can see
    cameraPtr->setFarClipDistance(1000); // far distance Camera can see
@@ -46,10 +47,10 @@ Game::Game()
    cameraPtr->setAspectRatio(Real(viewportPtr->getActualWidth()) / (viewportPtr->getActualHeight()));
 
    // set the scene's ambient light
-   sceneManagerPtr->setAmbientLight(ColourValue(0.75, 0.75, 0.75));
+   sceneManagerPtr->setAmbientLight(ColourValue(0, 0, 0));
 
    // create the Light
-   Light *lightPtr = sceneManagerPtr->createLight("Light"); // a Light
+   Light* lightPtr = sceneManagerPtr->createLight("Light"); // a Light
    lightPtr->setPosition(0, 0, 50); // set the Light's position
    
    //initialise OIS
@@ -104,6 +105,10 @@ void Game::createScene()
    // make haloship
    haloPtr = new Halo(sceneManagerPtr); //new HaloShip
    haloPtr->addToScene(); // add Haloship to scene
+
+   //make first enemy
+   raptorPtr = new Raptor(sceneManagerPtr);
+   raptorPtr->addToScene();
  } // end function createScene
 
 

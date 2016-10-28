@@ -29,10 +29,12 @@ Halo::~Halo()
 void Halo::addToScene()
   {
     //create Entity and attach it to a node in the scene
-    Entity *entityPtr = sceneManagerPtr->createEntity("Halo", "raptor.mesh");
-    nodePtr = sceneManagerPtr->getRootSceneNode()-> createChildSceneNode("Halo"); //create a SceneNode
+    Entity *entityPtr = sceneManagerPtr->createEntity("Halo", "j-13.mesh");
+    nodePtr = sceneManagerPtr->getRootSceneNode()->createChildSceneNode("Halo"); //create a SceneNode
     nodePtr->attachObject(entityPtr); //attach the Entity to SceneNode
     nodePtr->setScale(5, 5, 5); //scale SceneNode
+    nodePtr->attachObject(sceneManagerPtr->getCamera("GameCam"));
+    nodePtr->attachObject(sceneManagerPtr->getLight("Light"));
 
     //attach sound to halo
     haloSoundPtr = soundManagerPtr->createSound("halo", "halosound.wav", false);

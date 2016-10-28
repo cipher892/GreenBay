@@ -57,8 +57,8 @@ if (NOT OGRE_BUILD_PLATFORM_IPHONE)
 	set(OGRE_LIBRARIES ${OGRE_LIBRARIES} ${Boost_LIBRARIES})
 endif()
  
-set(HDRS ./include/Halo.h ./include/Game.h )
-set(SRCS ./src/Halo.cpp ./src/Game.cpp ./src/Main.cpp)
+set(HDRS ./include/Halo.h ./include/Raptor.h ./include/Game.h )
+set(SRCS ./src/Halo.cpp ./src/Raptor.cpp ./src/Game.cpp ./src/Main.cpp)
 set(OGREAL_INCLUDE_DIRECTORIES "/usr/local/include/OgreAL")
 set(OGREAL_LIBRARIES "/usr/local/lib/libOgreAL.so.0.0.0")
 

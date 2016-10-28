@@ -11,6 +11,7 @@
 using namespace Ogre;
 
 class Halo; // forward declaration of Halo class
+class Raptor; //forward declaration of Raptor class
 
 class Game : public FrameListener, public OIS::KeyListener
 {
@@ -45,7 +46,8 @@ class Game : public FrameListener, public OIS::KeyListener
       OIS::Keyboard *keyboardPtr; // pointer to the Keyboard
 
       // game objects
-      Halo* haloPtr; // pointer to the Halo ship
+      Halo* haloPtr; //pointer to the Halo ship
+      Raptor* raptorPtr; //pointer to enemy ship
       
       // variables to control game states
       bool quit, pause, start; // did user quit,pause or start the game?
