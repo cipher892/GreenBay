@@ -14,12 +14,13 @@ class Halo
 		 void fly(Real time); //start flying ship
 		 void moveShip(Vector3 pos); //change direction of ship
     private:
-		 SceneManager* sceneManagerPtr; // pointer to the SceneManager
-		 SceneNode* nodePtr; // pointer to the SceneNode
-		 OgreAL::SoundManager* soundManagerPtr; // pointer to the SoundManager
-		 OgreAL::Sound* haloSoundPtr; // sound played when Halo shoots
-         int speed; // speed of the Halo
-         Vector3 direction; // direction of the Halo
+    	void addMovables();
+		SceneManager* sceneManagerPtr; // pointer to the SceneManager
+	    SceneNode* nodePtr; // pointer to the SceneNode
+	    OgreAL::SoundManager* soundManagerPtr; // pointer to the SoundManager
+	    OgreAL::Sound* haloSoundPtr; // sound played when Halo shoots
+        int speed; // speed of the Halo
+        Vector3 direction; // direction of the Halo
  }; // end class Halo
 
 #endif // Halo_H

@@ -22,7 +22,7 @@ Raptor::~Raptor()
 void Raptor::addToScene()
   {
     //create Entity and attach it to a node in the scene
-    Entity* entityPtr = sceneManagerPtr->createEntity("Raptor", "raptor.mesh");
+    Entity* entityPtr = sceneManagerPtr->createEntity("Raptor", "j-13.mesh");
     nodePtr = sceneManagerPtr->getRootSceneNode()->createChildSceneNode("Raptor"); //create a SceneNode
     nodePtr->attachObject(entityPtr); //attach the Entity to SceneNode
     nodePtr->setScale(5, 5, 5); //scale SceneNode

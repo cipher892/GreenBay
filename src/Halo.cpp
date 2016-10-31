@@ -29,18 +29,28 @@ Halo::~Halo()
 void Halo::addToScene()
   {
     //create Entity and attach it to a node in the scene
-    Entity *entityPtr = sceneManagerPtr->createEntity("Halo", "j-13.mesh");
+    Entity* entityPtr = sceneManagerPtr->createEntity("Halo", "raptor.mesh");
     nodePtr = sceneManagerPtr->getRootSceneNode()->createChildSceneNode("Halo"); //create a SceneNode
     nodePtr->attachObject(entityPtr); //attach the Entity to SceneNode
     nodePtr->setScale(5, 5, 5); //scale SceneNode
-    nodePtr->attachObject(sceneManagerPtr->getCamera("GameCam"));
-    nodePtr->attachObject(sceneManagerPtr->getLight("Light"));
-
-    //attach sound to halo
-    haloSoundPtr = soundManagerPtr->createSound("halo", "halosound.wav", false);
-    nodePtr->attachObject(haloSoundPtr); //attach a sound to SceneNode
+    addMovables();
   } //end function addToScene
 
+void Halo::addMovables()
+{
+   Light* lightPtr = sceneManagerPtr->createLight("SpotLight"); // a Light
+   lightPtr->setType(Light::LT_SPOTLIGHT);
+   lightPtr->setDirection(-1, -1, 0);
+   lightPtr->setPosition(150, 150, 0);   
+
+   //attach light and camera to raptor ship
+   nodePtr->attachObject(lightPtr);
+   nodePtr->attachObject(sceneManagerPtr->getCamera("GameCam"));
+
+   //attach sound to halo
+    haloSoundPtr = soundManagerPtr->createSound("halo", "halosound.wav", false);
+    nodePtr->attachObject(haloSoundPtr); //attach a sound to SceneNode
+}
 
 void Halo::fly(Real time)
   {

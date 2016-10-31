@@ -49,10 +49,6 @@ Game::Game()
    // set the scene's ambient light
    sceneManagerPtr->setAmbientLight(ColourValue(0, 0, 0));
 
-   // create the Light
-   Light* lightPtr = sceneManagerPtr->createLight("Light"); // a Light
-   lightPtr->setPosition(0, 0, 50); // set the Light's position
-   
    //initialise OIS
    unsigned long hWnd; // variable to hold the window handle retrieved from the render window
    windowPtr->getCustomAttribute("WINDOW", &hWnd); // get window handle and populate handle variable

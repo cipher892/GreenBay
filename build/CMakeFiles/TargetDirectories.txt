@@ -1,1 +1,7 @@
-/home/chuks/others/GreenBay/build/CMakeFiles/GreenBay.dir
+/home/chuks/GreenBay/build/CMakeFiles/install.dir
+/home/chuks/GreenBay/build/CMakeFiles/list_install_components.dir
+/home/chuks/GreenBay/build/CMakeFiles/rebuild_cache.dir
+/home/chuks/GreenBay/build/CMakeFiles/GreenBay.dir
+/home/chuks/GreenBay/build/CMakeFiles/install/local.dir
+/home/chuks/GreenBay/build/CMakeFiles/install/strip.dir
+/home/chuks/GreenBay/build/CMakeFiles/edit_cache.dir

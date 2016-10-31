@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/chuks/others/GreenBay/include/Game.h
+/home/chuks/GreenBay/include/Game.h
 Ogre.h
 -
 OISEvents.h
@@ -20,17 +20,17 @@ OgreOverlaySystem.h
 OgreOverlayElement.h
 -
 
-/home/chuks/others/GreenBay/include/Halo.h
+/home/chuks/GreenBay/include/Halo.h
 Ogre.h
 -
 OgreAL.h
 -
 
-/home/chuks/others/GreenBay/include/Raptor.h
+/home/chuks/GreenBay/include/Raptor.h
 Ogre.h
 -
 
-/home/chuks/others/GreenBay/src/Game.cpp
+/home/chuks/GreenBay/src/Game.cpp
 sstream
 -
 stdexcept
@@ -48,11 +48,33 @@ OISInputManager.h
 OISKeyboard.h
 -
 ../include/Game.h
-/home/chuks/others/GreenBay/include/Game.h
+/home/chuks/GreenBay/include/Game.h
 ../include/Halo.h
-/home/chuks/others/GreenBay/include/Halo.h
+/home/chuks/GreenBay/include/Halo.h
 ../include/Raptor.h
-/home/chuks/others/GreenBay/include/Raptor.h
+/home/chuks/GreenBay/include/Raptor.h
+
+/home/chuks/GreenBay/src/Halo.cpp
+Ogre.h
+-
+OgreAL.h
+-
+../include/Halo.h
+/home/chuks/GreenBay/include/Halo.h
+
+/home/chuks/GreenBay/src/Main.cpp
+iostream
+-
+../include/Game.h
+/home/chuks/GreenBay/include/Game.h
+
+/home/chuks/GreenBay/src/Raptor.cpp
+Ogre.h
+-
+OgreAL.h
+-
+../include/Raptor.h
+/home/chuks/GreenBay/include/Raptor.h
 
 /usr/include/ois/OISConfig.h
 

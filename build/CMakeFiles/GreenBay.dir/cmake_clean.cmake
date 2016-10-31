@@ -1,4 +1,4 @@
-FILE(REMOVE_RECURSE
+file(REMOVE_RECURSE
   "CMakeFiles/GreenBay.dir/src/Halo.cpp.o"
   "CMakeFiles/GreenBay.dir/src/Raptor.cpp.o"
   "CMakeFiles/GreenBay.dir/src/Game.cpp.o"
@@ -8,6 +8,6 @@ FILE(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-FOREACH(lang CXX)
-  INCLUDE(CMakeFiles/GreenBay.dir/cmake_clean_${lang}.cmake OPTIONAL)
-ENDFOREACH(lang)
+foreach(lang CXX)
+  include(CMakeFiles/GreenBay.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
