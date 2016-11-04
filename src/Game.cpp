@@ -13,16 +13,20 @@
 using namespace std;
 using namespace Ogre;
 
-const Vector3 RIGHT = Vector3(15, 0, 0);
-const Vector3 LEFT = Vector3(-15, 0, 0);
+const Vector3 RIGHT = Vector3(1, 0, -1);
+const Vector3 LEFT = Vector3(-1, 0, -1);
+const Vector3 STRAIGHT = Vector3(0, 0, -1);
 
 Game::Game()
 {
    rootPtr = new Root();// initialize Root object
 
-   // use the Ogre Config Dialog Box to choose the settings
-   if (!(rootPtr->showConfigDialog())) // user canceled the dialog box
-      throw runtime_error("User Canceled Ogre Setup Dialog Box.");
+   // Restdefault setting use the Ogre Config Dialog Box to choose the settings
+   if (!rootPtr->restoreConfig())
+   {
+      if(!(rootPtr->showConfigDialog()))
+        throw runtime_error("Setup Dialog box canceled");
+   }
 
    // get a pointer to the RenderWindow
    windowPtr = rootPtr->initialise(true, "GreenBay");
@@ -32,19 +36,32 @@ Game::Game()
    mOverlaySystem = new OverlaySystem();
    sceneManagerPtr->addRenderQueueListener(mOverlaySystem);
 
-   // create Camera
-   cameraPtr = sceneManagerPtr->createCamera("GameCam");
-   cameraPtr->setPosition(Vector3(0, 35, 150)); // set Camera position
-   cameraPtr->lookAt(Vector3(0, 0, 0)); // set where Camera looks
-   cameraPtr->setNearClipDistance(5); // near distance Camera can see
-   cameraPtr->setFarClipDistance(1000); // far distance Camera can see
+   // create Cameras
+   camPtr1 = sceneManagerPtr->createCamera("GameCam1");
+   camPtr1->setPosition(Vector3(0, 35, 150)); // set Camera position
+   camPtr1->lookAt(Vector3(0, 0, 0)); // set where Camera looks
+   camPtr1->setNearClipDistance(5); // near distance Camera can see
+   camPtr1->setFarClipDistance(1000); // far distance Camera can see
+
+   camPtr2 = sceneManagerPtr->createCamera("GameCam2");
+   camPtr2->setPosition(Vector3(0, 35, -150)); // set Camera position
+   camPtr2->lookAt(Vector3(0, 0, 0)); // set where Camera looks
+   camPtr2->setNearClipDistance(5); // near distance Camera can see
+   camPtr2->setFarClipDistance(1000); // far distance Camera can see
 
    // create the Viewport
-   viewportPtr = windowPtr->addViewport(cameraPtr);
-   viewportPtr->setBackgroundColour(ColourValue(0, 0, 0));
+   viewportPtr1 = windowPtr->addViewport(camPtr1);
+   viewportPtr1->setBackgroundColour(ColourValue(0, 0, 0));
+   
+   /*split screen, 2 viewports
+   viewportPtr1 = windowPtr->addViewport(camPtr1, 1, 0, 0, 1, 0.5);
+   Viewport* viewportPtr2 = windowPtr->addViewport(camPtr2, 2, 0, 0.5, 1, 0.5);
+   viewportPtr2->setBackgroundColour(ColourValue(0.2, 0.2, 0.2));*/
+   //camPtr2->setAspectRatio(Real(viewportPtr2->getActualWidth()) / (viewportPtr2->getActualHeight()));
 
-   // set the Camera's aspect ratio
-   cameraPtr->setAspectRatio(Real(viewportPtr->getActualWidth()) / (viewportPtr->getActualHeight()));
+   // set the Cameras aspect ratios
+   camPtr1->setAspectRatio(Real(viewportPtr1->getActualWidth()) / (viewportPtr1->getActualHeight()));
+   camPtr2->setAspectRatio(Real(viewportPtr1->getActualWidth()) / (viewportPtr1->getActualHeight()));
 
    // set the scene's ambient light
    sceneManagerPtr->setAmbientLight(ColourValue(0, 0, 0));
@@ -132,11 +149,23 @@ bool Game::keyPressed(const OIS::KeyEvent &keyEventRef)
         case OIS::KC_ESCAPE: // escape key hit:quit
            quit = true;
            break;
-       	case OIS::KC_LEFT: // up-arrow key hit: move the right Paddle up
+        case OIS::KC_1: // hit key 2: switch camera 1
+           viewportPtr1->setCamera(camPtr1);
+           break;
+        case OIS::KC_2: // hit key 1: switch camera 2
+           viewportPtr1->setCamera(camPtr2);
+           break;
+       	case OIS::KC_LEFT: // left-arrow key hit: move ship left
  		       haloPtr->moveShip(LEFT);
 		       break;
-        case OIS::KC_RIGHT: //down-arrow key hit: move the right Paddle down
+        case OIS::KC_RIGHT: //right-arrow key hit: move ship right
            haloPtr->moveShip(RIGHT);
+           break;
+        case OIS::KC_R: //R key hit: rotate ship
+           haloPtr->rotate();
+           break;
+         case OIS::KC_O: //O key hit: normal orientation
+           haloPtr->resetRotate();
            break;
         case OIS::KC_P: // P key hit: pause the game
            pause = true; // set pause to true
@@ -159,6 +188,19 @@ bool Game::keyPressed(const OIS::KeyEvent &keyEventRef)
 // process key released events
 bool Game::keyReleased(const OIS::KeyEvent &keyEventRef)
  {
+    if (!pause)
+    {
+      // process KeyEvents that apply when the game is not paused
+      switch (keyEventRef.key)
+      {
+        case OIS::KC_LEFT: // up-arrow key released: move ship straight
+           haloPtr->moveShip(STRAIGHT);
+           break;
+        case OIS::KC_RIGHT: //down-arrow key released: move ship straight
+           haloPtr->moveShip(STRAIGHT);
+           break;
+      } // end switch
+    } // end if
     return true;
  } // end function keyReleased
 

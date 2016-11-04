@@ -38,26 +38,36 @@ void Halo::addToScene()
 
 void Halo::addMovables()
 {
-   Light* lightPtr = sceneManagerPtr->createLight("SpotLight"); // a Light
-   lightPtr->setType(Light::LT_SPOTLIGHT);
-   lightPtr->setDirection(-1, -1, 0);
-   lightPtr->setPosition(150, 150, 0);   
-
    //attach light and camera to raptor ship
-   nodePtr->attachObject(lightPtr);
-   nodePtr->attachObject(sceneManagerPtr->getCamera("GameCam"));
+  Light* lightPtr = sceneManagerPtr->createLight("SpotLight"); // a Light
+  lightPtr->setType(Light::LT_SPOTLIGHT);
+  lightPtr->setDirection(-1, -1, 0);
+  lightPtr->setPosition(150, 150, 0);   
+  nodePtr->attachObject(lightPtr);
 
    //attach sound to halo
-    haloSoundPtr = soundManagerPtr->createSound("halo", "halosound.wav", false);
-    nodePtr->attachObject(haloSoundPtr); //attach a sound to SceneNode
+  haloSoundPtr = soundManagerPtr->createSound("halo", "halosound.wav", false);
+  nodePtr->attachObject(haloSoundPtr); //attach a sound to SceneNode
 }
 
 void Halo::fly(Real time)
-  {
-    nodePtr->translate((direction * (speed * time))); //move Halo
-  } //end function moveHalo
+{
+  nodePtr->translate((direction * (speed * time))); //move Halo
+  sceneManagerPtr->getCamera("GameCam1")->move(Vector3(0, 0, -1) * (speed * time));
+  sceneManagerPtr->getCamera("GameCam2")->move(Vector3(0, 0, -1) * (speed * time));
+} //end function moveHalo
 
 void Halo::moveShip(Vector3 pos)
-  {
-    //nodePtr->translate((direction * (speed * time))); //move Halo
-  } //end function moveHalo
+{
+  direction = pos; //change direction
+} //end function moveShip
+
+void Halo::rotate()
+{
+  //nodePtr->setOrientation(Quaternion(Degree(90), Vector3(0,1,0))); //rotate 
+} //end function rotate
+
+void Halo::resetRotate()
+{
+  //nodePtr->resetOrientation(); //rotate 
+} //end function rotate

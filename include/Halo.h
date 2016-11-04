@@ -13,6 +13,8 @@ class Halo
 		 void addToScene(); // add the Halo to the scene
 		 void fly(Real time); //start flying ship
 		 void moveShip(Vector3 pos); //change direction of ship
+		 void rotate(); //rotate ship
+		 void resetRotate(); //normal orientation
     private:
     	void addMovables();
 		SceneManager* sceneManagerPtr; // pointer to the SceneManager

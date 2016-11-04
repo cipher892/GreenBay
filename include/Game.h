@@ -35,8 +35,10 @@ class Game : public FrameListener, public OIS::KeyListener
       Root* rootPtr; // pointer to Ogre's Root object
       SceneManager* sceneManagerPtr; // pointer to the SceneManager
       RenderWindow* windowPtr; // pointer to RenderWindow to render scene in
-      Viewport* viewportPtr; // pointer to Viewport, area that a camera sees
-      Camera* cameraPtr; // pointer to a Camera in the scene
+      Viewport* viewportPtr1; // pointer to Viewport, area that a camera sees
+      //Viewport* viewportPtr2; // pointer to Viewport, area that a camera sees
+      Camera* camPtr1; // pointer to a Camera in the scene
+      Camera* camPtr2; // pointer to a Camera in the scene
       OverlaySystem* mOverlaySystem; //pointer to the OverlaySystem
       Overlay* pauseOverlayPtr; //pasue overlay
       Overlay* startOverlayPtr; //start overlay
