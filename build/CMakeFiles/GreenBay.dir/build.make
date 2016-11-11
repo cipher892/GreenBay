@@ -166,6 +166,7 @@ bin/GreenBay: /usr/lib/x86_64-linux-gnu/libpthread.so
 bin/GreenBay: /usr/lib/x86_64-linux-gnu/libOIS.so
 bin/GreenBay: /usr/local/lib/libOgreOverlay.so
 bin/GreenBay: /usr/local/lib/libOgreAL.so.0.0.0
+bin/GreenBay: /usr/local/lib/libOgreOde_Core_d.so.1.3.0
 bin/GreenBay: CMakeFiles/GreenBay.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable bin/GreenBay"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GreenBay.dir/link.txt --verbose=$(VERBOSE)
@@ -199,6 +200,7 @@ CMakeFiles/CMakeRelink.dir/GreenBay: /usr/lib/x86_64-linux-gnu/libpthread.so
 CMakeFiles/CMakeRelink.dir/GreenBay: /usr/lib/x86_64-linux-gnu/libOIS.so
 CMakeFiles/CMakeRelink.dir/GreenBay: /usr/local/lib/libOgreOverlay.so
 CMakeFiles/CMakeRelink.dir/GreenBay: /usr/local/lib/libOgreAL.so.0.0.0
+CMakeFiles/CMakeRelink.dir/GreenBay: /usr/local/lib/libOgreOde_Core_d.so.1.3.0
 CMakeFiles/CMakeRelink.dir/GreenBay: CMakeFiles/GreenBay.dir/relink.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable CMakeFiles/CMakeRelink.dir/GreenBay"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GreenBay.dir/relink.txt --verbose=$(VERBOSE)

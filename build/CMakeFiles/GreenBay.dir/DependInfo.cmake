@@ -28,6 +28,7 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/local/share/OGRE/samples/Common/include"
   "/usr/local/include/OGRE/Overlay"
   "/usr/local/include/OgreAL"
+  "/usr/local/include/OgreOde_Core"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

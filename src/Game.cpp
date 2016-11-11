@@ -7,11 +7,15 @@
 #include <OISEvents.h> // OISEvents class definition
 #include <OISInputManager.h> // OISInputManager class definition
 #include <OISKeyboard.h> // OISKeyboard class definition
+#include <OgreOde_Core.h> //OgreOde definitions
 #include "../include/Game.h" // Game class definition
 #include "../include/Halo.h"
 #include "../include/Raptor.h"
+#include "../include/CollisionTestedObject.h"
+
 using namespace std;
 using namespace Ogre;
+using namespace OgreOde;
 
 const Vector3 RIGHT = Vector3(1, 0, -1);
 const Vector3 LEFT = Vector3(-1, 0, -1);
@@ -38,26 +42,27 @@ Game::Game()
 
    // create Cameras
    camPtr1 = sceneManagerPtr->createCamera("GameCam1");
-   camPtr1->setPosition(Vector3(0, 35, 150)); // set Camera position
    camPtr1->lookAt(Vector3(0, 0, 0)); // set where Camera looks
    camPtr1->setNearClipDistance(5); // near distance Camera can see
    camPtr1->setFarClipDistance(1000); // far distance Camera can see
 
    camPtr2 = sceneManagerPtr->createCamera("GameCam2");
-   camPtr2->setPosition(Vector3(0, 35, -150)); // set Camera position
-   camPtr2->lookAt(Vector3(0, 0, 0)); // set where Camera looks
-   camPtr2->setNearClipDistance(5); // near distance Camera can see
-   camPtr2->setFarClipDistance(1000); // far distance Camera can see
+   camPtr2->setPosition(0, 17, -150);
+   camPtr2->lookAt(Vector3(0, 0, 0)); 
+   camPtr2->setNearClipDistance(5); 
+   camPtr2->setFarClipDistance(1000); 
 
    // create the Viewport
    viewportPtr1 = windowPtr->addViewport(camPtr1);
    viewportPtr1->setBackgroundColour(ColourValue(0, 0, 0));
    
-   /*split screen, 2 viewports
+   /*
+   split screen, 2 viewports
    viewportPtr1 = windowPtr->addViewport(camPtr1, 1, 0, 0, 1, 0.5);
    Viewport* viewportPtr2 = windowPtr->addViewport(camPtr2, 2, 0, 0.5, 1, 0.5);
-   viewportPtr2->setBackgroundColour(ColourValue(0.2, 0.2, 0.2));*/
-   //camPtr2->setAspectRatio(Real(viewportPtr2->getActualWidth()) / (viewportPtr2->getActualHeight()));
+   viewportPtr2->setBackgroundColour(ColourValue(0.2, 0.2, 0.2));
+   camPtr2->setAspectRatio(Real(viewportPtr2->getActualWidth()) / (viewportPtr2->getActualHeight()));
+   */
 
    // set the Cameras aspect ratios
    camPtr1->setAspectRatio(Real(viewportPtr1->getActualWidth()) / (viewportPtr1->getActualHeight()));
@@ -76,6 +81,22 @@ Game::Game()
    /*create a Keyboard,cast because inputmanager returns ois object true/false if you want input to be buffered/not */
    keyboardPtr = static_cast< OIS::Keyboard* >(inputManagerPtr->createInputObject(OIS::OISKeyboard, true)); 
    keyboardPtr->setEventCallback(this); // add a KeyListener
+   
+   //create ode world for collision mgt
+   world = new World(sceneManagerPtr);
+   world->setGravity(Vector3(0, 0, 0));
+   world->setCFM(10e-5);
+   world->setERP(0.8);
+   world->setAutoSleep(true);
+   world->setAutoSleepAverageSamplesCount(10);
+   world->setContactCorrectionVelocity(1.0);
+   world->setCollisionListener(this);
+
+   Real step_size = Real(0.01);
+   Real max_interval = Real(1.0 / 4);
+   Real time_scale = Real(1);
+   stepper = new StepHandler(world, StepHandler::BasicStep, step_size, max_interval, time_scale);
+   stepper->setAutomatic(StepHandler::AutoMode_PostFrame, rootPtr);  
 
    rootPtr->addFrameListener(this);  // add game as a FrameListener
 
@@ -116,11 +137,11 @@ void Game::createScene()
    startOverlayPtr->show(); // show the Overlay
 
    // make haloship
-   haloPtr = new Halo(sceneManagerPtr); //new HaloShip
+   haloPtr = new Halo(world); //new HaloShip
    haloPtr->addToScene(); // add Haloship to scene
 
    //make first enemy
-   raptorPtr = new Raptor(sceneManagerPtr);
+   raptorPtr = new Raptor(world);
    raptorPtr->addToScene();
  } // end function createScene
 
@@ -131,6 +152,22 @@ void Game::createScene()
    createScene(); // create the scene
    rootPtr->startRendering(); // start rendering frames
  } // end function run
+
+bool Game::collision(Contact* contact)
+{
+  Geometry* const g1 = contact->getFirstGeometry();
+  Geometry* const g2 = contact->getSecondGeometry();
+   if (g1 && g2)
+   {
+      const Body* const b1 = g1->getBody();
+      const Body* const  b2 = g2->getBody();
+      if (b1 && b2 && Joint::areConnected(b1, b2))
+          return false;
+   }  
+  any_cast<CollisionTestedObject*>(g1->getUserAny())->collide(contact);
+  any_cast<CollisionTestedObject*>(g2->getUserAny())->collide(contact);
+  return false;
+}
 
 
  // respond to user keyboard input
@@ -145,6 +182,7 @@ bool Game::keyPressed(const OIS::KeyEvent &keyEventRef)
         case OIS::KC_S: //S key hit:start game
            start = true;
            startOverlayPtr->hide(); //hide the start overlay
+           haloPtr->moveShip(STRAIGHT);
            break;
         case OIS::KC_ESCAPE: // escape key hit:quit
            quit = true;
@@ -161,16 +199,11 @@ bool Game::keyPressed(const OIS::KeyEvent &keyEventRef)
         case OIS::KC_RIGHT: //right-arrow key hit: move ship right
            haloPtr->moveShip(RIGHT);
            break;
-        case OIS::KC_R: //R key hit: rotate ship
-           haloPtr->rotate();
-           break;
-         case OIS::KC_O: //O key hit: normal orientation
-           haloPtr->resetRotate();
-           break;
         case OIS::KC_P: // P key hit: pause the game
-           pause = true; // set pause to true
-           pauseOverlayPtr->show(); // show the pause Overlay
-           break;
+          haloPtr->stop();
+          pause = true; // set pause to true
+         pauseOverlayPtr->show(); // show the pause Overlay
+         break;
       } // end switch
     } // end if
   else // game is paused
@@ -180,6 +213,7 @@ bool Game::keyPressed(const OIS::KeyEvent &keyEventRef)
        {
          pause = false; // set pause to false when user resumes the game
          pauseOverlayPtr->hide(); // hide the pause Overlay
+         haloPtr->moveShip(STRAIGHT);
         } // end if
     } // end else
   return true;
@@ -187,7 +221,7 @@ bool Game::keyPressed(const OIS::KeyEvent &keyEventRef)
 
 // process key released events
 bool Game::keyReleased(const OIS::KeyEvent &keyEventRef)
- {
+{
     if (!pause)
     {
       // process KeyEvents that apply when the game is not paused
@@ -202,17 +236,17 @@ bool Game::keyReleased(const OIS::KeyEvent &keyEventRef)
       } // end switch
     } // end if
     return true;
- } // end function keyReleased
+} // end function keyReleased
 
 // return true if the program should render the next frame
 bool Game::frameEnded(const FrameEvent &frameEvent)
- {
+{
    return !quit; // quit = false if the user hasn't quit yet
- } // end function frameEnded
+} // end function frameEnded
 
  // process game logic, return true if the next frame should be rendered
 bool Game::frameStarted(const FrameEvent &frameEvent)
-  {
+{
     keyboardPtr->capture(); // get keyboard events
     
     // the game is not paused and is started, move ship
@@ -220,4 +254,4 @@ bool Game::frameStarted(const FrameEvent &frameEvent)
       haloPtr->fly(frameEvent.timeSinceLastFrame);
 
   return !quit; // quit = false
- }
+}

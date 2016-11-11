@@ -2,17 +2,23 @@
 #ifndef Raptor_H
 #define Raptor_H
 #include <Ogre.h> // Ogre class definitions
-using namespace Ogre;
+#include <OgreOde_Core.h> //OgreOde definitions
+#include "../include/CollisionTestedObject.h"
 
-class Raptor
- {
+using namespace Ogre;
+using namespace OgreOde;
+
+class Raptor : public CollisionTestedObject 
+{
 	public:
-		 Raptor(SceneManager* ptr); // constructor
+		 Raptor(World* world); // constructor
 		 ~Raptor(); // destructor
 		 void addToScene(); // add the Raptor to the scene
+		 void collide(Contact* contact);
     private:
-		 SceneManager* sceneManagerPtr; // pointer to the SceneManager
-		 SceneNode* nodePtr; // pointer to the SceneNode
- }; // end class Raptor
+        World* worldptr;
+        SceneNode* nodePtr; // pointer to the SceneNode
+        void addGeom();
+}; // end class Raptor
 
 #endif // Raptor_H

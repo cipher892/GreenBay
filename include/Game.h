@@ -7,13 +7,15 @@
 #include <OISKeyboard.h> // OISKeyboard class definition
 #include <OgreOverlaySystem.h>
 #include <OgreOverlayElement.h>
+#include <OgreOde_Core.h> //OgreOde definitions
 
 using namespace Ogre;
+using namespace OgreOde;
 
 class Halo; // forward declaration of Halo class
 class Raptor; //forward declaration of Raptor class
 
-class Game : public FrameListener, public OIS::KeyListener
+class Game : public FrameListener, public OIS::KeyListener, public CollisionListener
 {
    public:
       Game(); // constructor
@@ -27,6 +29,11 @@ class Game : public FrameListener, public OIS::KeyListener
       // move the game objects and control interactions between frames
       virtual bool frameStarted(const FrameEvent &frameEvent);
       virtual bool frameEnded(const FrameEvent &frameEvent);
+
+      //Ode dynamics and collision objects
+      World* world; //pointer to ode's root object. Every object is added to world
+      StepHandler* stepper; //handles time, used to update events
+      bool collision(Contact* contact);
 
    private:
       void createScene(); // create the scene to be rendered
@@ -44,8 +51,8 @@ class Game : public FrameListener, public OIS::KeyListener
       Overlay* startOverlayPtr; //start overlay
 
       // OIS input objects
-      OIS::InputManager *inputManagerPtr; // pointer to the InputManager
-      OIS::Keyboard *keyboardPtr; // pointer to the Keyboard
+      OIS::InputManager* inputManagerPtr; // pointer to the InputManager
+      OIS::Keyboard* keyboardPtr; // pointer to the Keyboard
 
       // game objects
       Halo* haloPtr; //pointer to the Halo ship
